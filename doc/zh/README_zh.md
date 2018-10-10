@@ -344,31 +344,11 @@ window.addEventListener('neuronWebReady', () => {
 })
 ```
 
-此时, dapp 就可以通过 `nervos.appchain.getDefaultAccount` 获取 `neuronWeb` 中的默认账号, 因此可以省略交易模板中的 from 字段, 改由动态从 `neuronWeb` 中获取。
+因为 `neuronWeb` 负责对交易签名, `privateKey` 可以从交易模板中去除。
 
 ```javascript
 const transaction = {
-  // from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
-  privateKey: config.privateKey,
-  nonce: 999999,
-  quota: 1000000,
-  data: App.contracts.bytecode,
-  chainId: 1,
-  version: 0,
-  validUntilBlock: 999999,
-  value: '0x0',
-}
-nervos.appchain.getDefaultAccount().then(defaultAccount => {
-  transaction.from = defaultAccount
-  return
-})
-```
-
-因为 `neuronWeb` 负责对交易签名, `privateKey` 也可以从交易模板中去除。
-
-```javascript
-const transaction = {
-  // from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
+  from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
   // privateKey: config.privateKey,
   nonce: 999999,
   quota: 1000000,

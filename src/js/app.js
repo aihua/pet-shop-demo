@@ -1,4 +1,10 @@
 const nervos = Nervos(config.chain)
+
+window.addEventListener('neuronWebReady', () => {
+  window.console.log('neuron web ready')
+  window.addMessenger(nervos)
+})
+
 App = {
     contracts: {},
 
@@ -64,7 +70,7 @@ App = {
 
         const transaction = {
             from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
-            privateKey: config.privateKey,
+            //privateKey: config.privateKey,
             nonce: 999999,
             quota: 1000000,
             data: App.contracts.bytecode,
