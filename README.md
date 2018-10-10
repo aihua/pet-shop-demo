@@ -349,31 +349,11 @@ window.addEventListener('neuronWebReady', () => {
 })
 ```
 
-Then the dapp is able to access default account by `nervos.appchain.getDefaultAccount`, by that `from` can be omitted in transaction.
-
-```javascript
-const transaction = {
-  // from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
-  privateKey: config.privateKey,
-  nonce: 999999,
-  quota: 1000000,
-  data: App.contracts.bytecode,
-  chainId: 1,
-  version: 0,
-  validUntilBlock: 999999,
-  value: '0x0',
-}
-nervos.appchain.getDefaultAccount().then(defaultAccount => {
-  transaction.from = defaultAccount
-  return
-})
-```
-
 Since `neuronWeb` will sign the transaction, `privateKey` can be removed from the dapp.
 
 ```javascript
 const transaction = {
-  // from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
+  from: '0x46a23E25df9A0F6c18729ddA9Ad1aF3b6A131160',
   // privateKey: config.privateKey,
   nonce: 999999,
   quota: 1000000,
