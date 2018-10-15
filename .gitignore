@@ -3,3 +3,4 @@
 /truffle.js
 /src/js/config.js
 .idea
+.DS_Store
